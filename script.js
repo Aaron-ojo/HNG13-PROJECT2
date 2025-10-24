@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("contactForm");
+  const form = document.querySelector("form");
 
   function getByTestId(testId) {
     return document.querySelector(`[data-testid="${testId}"]`);
@@ -11,16 +11,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (errorElement) {
       errorElement.textContent = message;
-      // Ensure the error has an id for aria-describedby
       if (!errorElement.id) {
         errorElement.id = `error-${field}`;
       }
-      errorElement.setAttribute("role", "alert");
-    }
-
-    if (inputElement) {
-      inputElement.setAttribute("aria-invalid", "true");
-      inputElement.setAttribute("aria-describedby", errorElement.id);
+      if (inputElement) {
+        inputElement.setAttribute("aria-describedby", errorElement.id);
+        inputElement.setAttribute("aria-invalid", "true");
+      }
     }
   }
 
@@ -30,12 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (errorElement) {
       errorElement.textContent = "";
-      errorElement.removeAttribute("role");
     }
 
     if (inputElement) {
       inputElement.removeAttribute("aria-invalid");
-      inputElement.removeAttribute("aria-describedby");
     }
   }
 
@@ -44,24 +39,18 @@ document.addEventListener("DOMContentLoaded", function () {
     if (successMessage) {
       successMessage.textContent =
         "Thank you! Your message has been sent successfully.";
-    }
 
-    // Clear inputs and errors
-    ["name", "email", "subject", "message"].forEach((field) => {
-      const input = getByTestId(`test-contact-${field}`);
-      if (input) input.value = "";
-      clearError(field);
-    });
+      form.reset();
 
-    // move focus to success message for screen readers
-    if (successMessage) {
+      ["name", "email", "subject", "message"].forEach((f) => clearError(f));
+
       successMessage.focus?.();
     }
   }
 
   function validateName() {
     const el = getByTestId("test-contact-name");
-    const name = el ? el.value.trim() : "";
+    const name = el && el.value ? el.value.trim() : "";
     if (!name) {
       showError("name", "Full name is required");
       return false;
@@ -72,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function validateEmail() {
     const el = getByTestId("test-contact-email");
-    const email = el ? el.value.trim() : "";
+    const email = el && el.value ? el.value.trim() : "";
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!email) {
@@ -91,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function validateSubject() {
     const el = getByTestId("test-contact-subject");
-    const subject = el ? el.value.trim() : "";
+    const subject = el && el.value ? el.value.trim() : "";
     if (!subject) {
       showError("subject", "Subject is required");
       return false;
@@ -102,7 +91,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function validateMessage() {
     const el = getByTestId("test-contact-message");
-    const message = el ? el.value.trim() : "";
+    const message = el && el.value ? el.value.trim() : "";
     if (!message) {
       showError("message", "Message is required");
       return false;
@@ -117,20 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
     return true;
   }
 
-  // Realtime clearing of errors while typing
-  ["name", "email", "subject", "message"].forEach((field) => {
-    const el = getByTestId(`test-contact-${field}`);
-    if (el) {
-      el.addEventListener("input", () => clearError(field));
-    }
-  });
-
   form.addEventListener("submit", function (event) {
     event.preventDefault();
-
-    // Clear any previous success message
-    const successMessage = getByTestId("test-contact-success");
-    if (successMessage) successMessage.textContent = "";
 
     const isNameValid = validateName();
     const isEmailValid = validateEmail();
@@ -139,6 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (isNameValid && isEmailValid && isSubjectValid && isMessageValid) {
       showSuccess();
+    } else {
+      const firstInvalid = form.querySelector("[aria-invalid='true']");
+      if (firstInvalid) firstInvalid.focus();
     }
   });
 });
