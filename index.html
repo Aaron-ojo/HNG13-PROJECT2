@@ -1,61 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="style.css" />
-  <title>About Me</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile Card</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <nav class="main-nav" aria-label="Main Navigation">
-      <a href="index.html" data-testid="test-nav-home">Home</a>
-      <a href="contact.html" data-testid="test-nav-contact">Contact</a>
+  <nav class="main-nav">
+    <a href="index.html">Profile</a>
+    <a href="contact.html">Contact</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <article id="test-user-profile-card" data-testid="test-profile-card">
+    <img src="Aaron.jpg" alt="Profile Picture" id="test-user-profile-picture" data-testid="test-user-avatar">
+
+    <h2 id="test-user-name" data-testid="test-user-name">Aaron Ojo</h2>
+    <p id="test-user-bio" data-testid="test-user-bio">
+      I am an 18 year old frontend developer that gives attention to details and builds beautiful and functional interfaces.
+    </p>
+
+    <div id="time-container">
+      <span>Current Time (ms): </span>
+      <span id="test-user-time" data-testid="test-user-time"></span>
+    </div>
+
+    <figure id="avatar-section">
+      <img src="default-avatar.jpg" id="test-user-avatar" alt="Upload Avatar" data-testid="test-user-avatar-upload">
+      <div id="upload-simple">
+        <input type="file" id="file-upload" accept="image/*">
+      </div>
+    </figure>
+
+    <nav id="test-user-social-links" data-testid="test-user-social-links">
+      <p>Social Media Handles</p>
+      <ul>
+        <li><a href="https://linkedin.com" class="social-link" data-testid="test-user-social-linkedin" target="_blank">LinkedIn</a></li>
+        <li><a href="https://twitter.com" class="social-link" data-testid="test-user-social-twitter" target="_blank">X</a></li>
+        <li><a href="https://github.com" class="social-link" data-testid="test-user-social-github" target="_blank">GitHub</a></li>  
+      </ul>
     </nav>
-  </header>
 
-  <main data-testid="test-about-page">
-    <h1>About Me</h1>
+    <section>
+      <ul id="test-user-hobbies" data-testid="test-user-hobbies">
+        <strong>Hobbies</strong>
+        <li>Gaming</li>
+        <li>Music</li>
+        <li>Football</li>
+      </ul>
 
-    <section aria-labelledby="bio-heading">
-      <h2 id="bio-heading">Bio</h2>
-      <p data-testid="test-about-bio">
-        <!-- Replace with your bio -->
-        Hi — I'm [Your Name]. I'm learning frontend development and working
-        through the Stage 1 tasks.
-      </p>
-    </section>
-
-    <section aria-labelledby="goals-heading">
-      <h2 id="goals-heading">Goals in this program</h2>
-      <ul data-testid="test-about-goals">
-        <li>Build responsive interfaces</li>
-        <li>Understand accessible patterns</li>
-        <li>Ship clean, testable code</li>
+      <ul id="test-user-dislikes" data-testid="test-user-dislikes">
+        <strong>Dislikes</strong>
+        <li>NIL</li>
       </ul>
     </section>
+  </article>
 
-    <section aria-labelledby="confidence-heading">
-      <h2 id="confidence-heading">Areas of low confidence</h2>
-      <p data-testid="test-about-confidence">
-        <!-- Replace with honest areas you're less confident about -->
-        I'm still improving on advanced JavaScript and testing strategies.
-      </p>
-    </section>
-
-    <section aria-labelledby="future-heading">
-      <h2 id="future-heading">Note to future self</h2>
-      <p data-testid="test-about-future-note">
-        Keep learning every day — small steps compound into big progress.
-      </p>
-    </section>
-
-    <section aria-labelledby="extra-heading">
-      <h2 id="extra-heading">Extra thoughts</h2>
-      <p data-testid="test-about-extra">
-        Excited to work on projects and collaborate with peers.
-      </p>
-    </section>
-  </main>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -5,142 +5,262 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
+  background-color: #f8fafc;
+  color: #111827;
   line-height: 1.6;
-  color: #333;
-  background-color: #f4f4f4;
-  padding: 20px;
 }
 
 .main-nav {
   display: flex;
-  gap: 12px;
-  margin-bottom: 20px;
+  justify-content: center;
+  gap: 20px;
+  background: #1e3a8a;
+  padding: 15px;
 }
 
 .main-nav a {
-  color: #1a73e8;
+  color: white;
   text-decoration: none;
-  font-size: 0.95rem;
-  padding: 6px 10px;
-  border-radius: 6px;
-  border: 1px solid transparent;
-}
-
-.main-nav a:focus,
-.main-nav a:hover {
-  background: rgba(26, 115, 232, 0.08);
-  outline: none;
-  border-color: rgba(26, 115, 232, 0.18);
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #2c3e50;
-}
-
-.container {
-  max-width: 900px;
-  margin: 0 auto;
-  background: white;
-  padding: 28px;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-}
-
-.form-group {
-  margin-bottom: 18px;
-}
-
-label {
-  display: block;
-  margin-bottom: 6px;
   font-weight: bold;
-  color: #555;
+  font-size: 18px;
+  transition: color 0.3s ease;
 }
 
-input[type="text"],
-input[type="email"],
-textarea {
+.main-nav a:hover {
+  color: #facc15;
+}
+
+.main-nav a.active {
+  text-decoration: underline;
+}
+
+#test-user-profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px auto;
+  background-color: lightgrey;
+  border-radius: 15px;
+  padding: 25px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#test-user-name {
+  color: #1e3a8a;
+  font-family: "Poppins", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-align: center;
+  margin: 15px 0;
+  word-wrap: break-word;
+}
+
+#test-user-profile-picture {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #667eea;
+  margin: 15px 0;
+}
+
+#test-user-bio {
+  font-size: 20px;
+  margin: 10px 0;
+  text-align: center;
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+  color: #333;
+}
+
+#test-user-social-links {
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.social-link {
+  text-decoration: none;
+  color: #1d4ed8;
+  margin: 0 10px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  color: red;
+  text-decoration: underline;
+}
+
+.social-link:active {
+  color: green;
+  text-decoration: underline;
+}
+
+#test-user-hobbies,
+#test-user-dislikes {
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  margin: 15px 0;
+}
+
+li {
+  color: green;
+  margin: 6px 0;
+  font-weight: normal;
+}
+
+#time-container {
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  text-align: center;
+  color: #1d4ed8;
+  margin: 10px 0;
+}
+
+#test-user-time {
+  font-size: 15px;
+  font-family: monospace;
+  font-weight: bold;
+  text-align: center;
+  color: red;
+  display: block;
+  margin-top: 5px;
+}
+
+#avatar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  margin: 15px auto;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  background: white;
+  width: 90%;
+  max-width: 250px;
+}
+
+#test-user-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid blue;
+}
+
+section {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+@media (max-width: 768px) {
+  #test-user-name {
+    font-size: 26px;
+  }
+
+  #test-user-bio {
+    font-size: 18px;
+  }
+
+  #test-user-profile-picture {
+    width: 130px;
+    height: 130px;
+  }
+
+  section {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  #test-user-profile-card {
+    width: 95%;
+    padding: 15px;
+  }
+
+  #avatar-section {
+    width: 80%;
+  }
+}
+
+form {
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin: 40px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+form input,
+form textarea {
   width: 100%;
   padding: 10px;
-  border: 2px solid #ddd;
-  border-radius: 4px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
   font-size: 16px;
+  font-family: "Open Sans", sans-serif;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
+form input:focus,
+form textarea:focus {
+  border-color: #2563eb;
   outline: none;
-  border-color: #3498db;
-  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.08);
-}
-
-textarea {
-  height: 120px;
-  resize: vertical;
-  font-family: inherit;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
 }
 
 button[type="submit"] {
-  background-color: #3498db;
+  background: #2563eb;
   color: white;
-  padding: 12px 22px;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 8px;
   font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 button[type="submit"]:hover {
-  background-color: #2980b9;
+  background: #1e40af;
 }
 
-.error-message {
-  color: #e74c3c;
+.error {
+  color: red;
   font-size: 14px;
-  margin-top: 6px;
-  min-height: 1.2em;
+  margin-top: -5px;
+  margin-bottom: 10px;
+  display: block;
 }
 
-.success-message {
-  background-color: #d4edda;
-  color: #155724;
-  padding: 12px;
-  border-radius: 4px;
-  margin-top: 18px;
-  min-height: 1.2em;
+.success {
+  color: green;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  body {
-    padding: 12px;
-  }
-
-  .container {
-    padding: 20px;
-  }
-
-  h1 {
-    font-size: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    margin: 6px;
-    padding: 14px;
-  }
-
-  h1 {
-    font-size: 1.3rem;
-  }
-
-  .main-nav {
-    gap: 8px;
-    flex-wrap: wrap;
+@media (max-width: 600px) {
+  form {
+    width: 90%;
   }
 }
